@@ -59,7 +59,8 @@
     chartType: DEFAULT_CHART_TYPE,
     useTimeSeries: false,
     useLogScale: false,
-    latest: undefined
+    latest: undefined,
+    compare: false
   };
 
   // Chart Related Properties

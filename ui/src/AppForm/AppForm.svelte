@@ -76,10 +76,24 @@
       <input type="checkbox" bind:checked={form.useLogScale} /> Log Scale for Y Axis
     </label>
 
-    <label class:disabled={form.chartType !== BY_TIMESTAMP}
-      ><input type="checkbox" bind:checked={form.useTimeSeries} /> Space X values
+    <label class:disabled={form.chartType !== BY_TIMESTAMP}>
+      <input type="checkbox" bind:checked={form.useTimeSeries} /> Space X values
       by time
     </label>
+
+    <label>
+      <input type="checkbox" bind:checked={form.compare} />
+      Compare charts
+    </label>
+    {#if form.compare}
+      <Select
+        label="Scenario"
+        on:blur={scenarioChanged}
+        on:change={scenarioChanged}
+        options={Object.keys(options.scenarios)}
+        value={form.scenario}
+      />
+    {/if}
   </div>
 </form>
 

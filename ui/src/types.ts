@@ -73,6 +73,7 @@ export type FormConfiguration = {
   useTimeSeries: boolean;
   useLogScale: boolean;
   latest?: number;
+  compare: boolean;
 };
 
 export type FormConfigurationKeys = keyof FormConfiguration;
