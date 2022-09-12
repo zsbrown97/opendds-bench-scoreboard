@@ -26,6 +26,13 @@ export type GitSha = string;
  */
 export type BuildHash = string;
 
+export type Group = 
+  | 'b1'
+  | 'disco'
+  | 'echo'
+  | 'fan'
+  | 'showtime';
+
 export type Scenario =
   | 'b1_latency_rtps'
   | 'b1_latency_tcp'
@@ -66,6 +73,7 @@ export type ChartType = 'by size' | 'by timestamp';
 export type SelectedTimestamps = Array<BenchmarkIdentifier>;
 export type FormConfiguration = {
   scenario: Scenario;
+  group: Group;
   statName: StatName;
   plotType: PlotType;
   chartType: ChartType;
@@ -82,6 +90,7 @@ export type FormScenarioOptions = {
 };
 
 export type FormSelectOptions = {
+  groups: Array<Group>;
   scenarios: Partial<Record<Scenario, FormScenarioOptions>>;
   plotTypes: Array<PlotType>;
   statNames: Array<StatName>;

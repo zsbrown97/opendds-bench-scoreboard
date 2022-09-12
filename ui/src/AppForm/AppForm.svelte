@@ -87,7 +87,7 @@
     </label>
     {#if form.compare}
       <Select
-        label="Scenario"
+        label="Group"
         on:blur={scenarioChanged}
         on:change={scenarioChanged}
         options={Object.keys(options.scenarios)}

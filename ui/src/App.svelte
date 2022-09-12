@@ -60,14 +60,16 @@
     useTimeSeries: false,
     useLogScale: false,
     latest: undefined,
-    compare: false
+    compare: false,
+    group: 'disco'
   };
 
   // Chart Related Properties
   let selectOptions: FormSelectOptions = {
     scenarios: {[form.scenario]: {serverCounts: []}},
     plotTypes: [],
-    statNames: []
+    statNames: [],
+    groups: []
   };
 
   let isSelectingTimestamps = false;
