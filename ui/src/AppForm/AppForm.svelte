@@ -3,15 +3,21 @@
   import {BY_TIMESTAMP} from '../AppCharting/chart-data-extractor';
   import {CHART_TYPES, DEFAULT_STAT_NAME, MDTD} from './form-data-helpers';
   import type {
-    FormConfiguration,
+    FormConfiguration, FormGroupOptions,
     FormScenarioOptions,
     FormSelectOptions,
+    Group,
     Scenario,
     StatName
   } from '../types';
 
   export let options: FormSelectOptions;
   export let form: FormConfiguration;
+  //
+  // let groupOpts: FormGroupOptions;
+  // $: groupOpts = options.groups[form.group] || {
+  //   serverCounts: []
+  // }
 
   let scenarioOpts: FormScenarioOptions;
   $: scenarioOpts = options.scenarios[form.scenario] || {
@@ -26,6 +32,11 @@
     if (serverCounts.length && serverCounts.indexOf(form.serverCount) === -1) {
       form.serverCount === serverCounts[0];
     }
+  }
+
+  function groupChanged(event: Event) {
+    form.group = <Group>(<HTMLInputElement>event.target).value;
+    if (form.statName === <StatName>MDTD) form.statName = DEFAULT_STAT_NAME;
   }
 
   function scenarioChanged(event: Event) {
@@ -88,10 +99,10 @@
     {#if form.compare}
       <Select
         label="Group"
-        on:blur={scenarioChanged}
-        on:change={scenarioChanged}
-        options={Object.keys(options.scenarios)}
-        value={form.scenario}
+        on:blur={groupChanged}
+        on:change={groupChanged}
+        options={Object.keys(options.groups)}
+        value={form.group}
       />
     {/if}
   </div>

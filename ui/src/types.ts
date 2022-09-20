@@ -46,6 +46,31 @@ export type Scenario =
   | 'fan_tcp'
   | 'showtime_mixed';
 
+/* B1 Scenarios */
+export type B1 =
+  | 'b1_latency_rtps'
+  | 'b1_latency_tcp'
+  | 'b1_latency_udp';
+
+/* Disco Scenarios */
+export type Disco =
+  | 'disco'
+  | 'disco-relay'
+  | 'disco-repo';
+
+/* Echo Scenarios */
+export type Echo =
+  | 'echo_rtps'
+  | 'echo_tcp';
+
+/* Fan Scenarios */
+export type Fan =
+  | 'fan_rtps'
+  | 'fan_tcp';
+
+/* Showtime Scenarios */
+export type Showtime = 'showtime_mixed';
+
 export type PlotType =
   | 'Cpu Utilization'
   | 'Discovery Time Delta'
@@ -85,13 +110,20 @@ export type FormConfiguration = {
 };
 
 export type FormConfigurationKeys = keyof FormConfiguration;
+
+
 export type FormScenarioOptions = {
   serverCounts: number[];
 };
 
+export type FormGroupOptions = {
+  serverCounts: number[];
+}
+
 export type FormSelectOptions = {
   groups: Array<Group>;
   scenarios: Partial<Record<Scenario, FormScenarioOptions>>;
+  b1: Array<B1>
   plotTypes: Array<PlotType>;
   statNames: Array<StatName>;
 };
